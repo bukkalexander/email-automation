@@ -1,22 +1,25 @@
-# Fika Script
-## user story
-- There is a list of people who will take turns to bring fika each week
-- In the start of every week, one person is appointed as responsible to bring fika at a specific weekday time.
-- Everyone should get a calendar invitation in the beginning of the week, which states a `place`, `datetime` and `responsible` for fika
-- In the start of the week, and the day before the fika `datetime`, the `resonsible` is reminded to bring fika.
-- Next week, the list is modified, so that the `responsible` is added to the bottom of the fika list.
-- Then, all the previous actions are repeated
+# Fika Script email automation
 
-## Design
-- schedule job 1 on mondays which sends out invitation and email to responsible person
-- schedule job 2 which sends out an email reminder, and then modifies the fika list and puts the last responsible in the bottom
+## Instructions
 
-## Implementation
-- job 1: call fika_script invitation reminder
-- job 2:call fika_script reminder rotate
+1. Create a YAML file named recipients.yaml and fill in the email recipients, according to recipients.yaml.template, and place the file in the repo root folder.
+2. Send email to the top recipient in the recipients.yaml by executing
 
-## TODO
-- create methods:
-  - send_invitation
-  - send_reminder
-  - rotate_list
+```bash
+  python3 ./email_automation.py send 
+```
+
+3. Rotate recipients in recipients.yaml, i.e. move the top recipient to the bottom, by executing
+
+```bash
+  python3 ./email_automation.py rotate 
+```
+
+4. Create a cronjob via crontab and schedule sending and rotation. Call the command below, and follow the instructions that appear
+
+```bash
+  crontab -e 
+```
+
+5. Here is an example of a working cronjob
+TODO
