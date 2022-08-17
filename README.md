@@ -3,10 +3,11 @@
 ## Instructions
 
 1. Create a YAML file named recipients.yaml and fill in the email recipients, according to recipients.yaml.template, and place the file in the repo root folder.
-2. Send email to the top recipient in the recipients.yaml by executing
+2. Create a YAML file named message.yaml and fill in the email message, according to message.yaml.template, and place the file in the repo root folder.
+3. Send email to the top recipient in the recipients.yaml, with the message in message.yaml, by executing
 
 ```bash
-  python3 ./email_automation.py send 
+  python3 ./email_automation.py send recipient.yaml message.yaml
 ```
 
 3. Rotate recipients in recipients.yaml, i.e. move the top recipient to the bottom, by executing
@@ -46,7 +47,7 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-0 8 * * 1 /home/alexander_bukk/workspace/email-automation/venv/bin/python3 /home/alexander_bukk/workspace/email-automation/email_automation.py send
-0 8 * * 3 /home/alexander_bukk/workspace/email-automation/venv/bin/python3 /home/alexander_bukk/workspace/email-automation/email_automation.py send
-0 15 * * 4 /home/alexander_bukk/workspace/email-automation/venv/bin/python3 /home/alexander_bukk/workspace/email-automation/email_automation.py rotate
+0 8 * * 1 /home/alexander_bukk/workspace/email-automation/venv/bin/python3 /home/alexander_bukk/workspace/email-automation/email_automation.py send /home/alexander_bukk/workspace/email-automation/recipients.yaml /home/alexander_bukk/workspace/email-automation/message.yaml
+0 8 * * 3 /home/alexander_bukk/workspace/email-automation/venv/bin/python3 /home/alexander_bukk/workspace/email-automation/email_automation.py send /home/alexander_bukk/workspace/email-automation/recipients.yaml /home/alexander_bukk/workspace/email-automation/message.yaml
+0 15 * * 4 /home/alexander_bukk/workspace/email-automation/venv/bin/python3 /home/alexander_bukk/workspace/email-automation/email_automation.py rotate /home/alexander_bukk/workspace/email-automation/recipients.yaml
 ```

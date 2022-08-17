@@ -1,0 +1,7 @@
+subject: Email subject
+content: |-
+  Dear {name},
+
+  This is a message.
+  
+  // email-automation
